@@ -1,0 +1,84 @@
+// ListasEnlazadas.cpp : This file contains the 'main' function. Program execution begins and ends there.
+// Insertar elemento en una lista
+
+#include <iostream>
+
+using namespace std;
+
+struct Nodo {
+    int dato;
+    Nodo* siguiente;
+
+};
+
+//Declarando funciones
+void insertarLista(Nodo*&, int);
+void mostrarLista(Nodo*);
+
+int main()
+{
+    Nodo* lista = NULL;
+
+    int dato;
+
+    cout << "Digite un numero 1: ";
+    cin >> dato;
+    insertarLista(lista, dato);
+
+    cout << "Digite un numero 2: ";
+    cin >> dato;
+    insertarLista(lista, dato);
+
+    cout << "Digite un numero 3: ";
+    cin >> dato;
+    insertarLista(lista, dato);
+
+    cout << "\n\nMostrando los datos de la lista\n";
+    cout << "--------------------------------\n\n";
+
+    mostrarLista(lista);
+
+    return 0;
+}
+
+void insertarLista(Nodo *&lista, int n) {
+    Nodo* nuevo_nodo = new Nodo();
+    //asignar n al nuevo nodo
+    nuevo_nodo->dato = n;
+
+    Nodo* aux1 = lista;
+    //para ordenar lista
+    Nodo* aux2 = NULL;
+
+    while ((aux1 != NULL) && (aux1->dato < n)) {
+        aux2 = aux1;
+        aux1 = aux1->siguiente;
+
+    }
+    //va al principio
+
+    if (lista == aux1) {
+
+        lista = nuevo_nodo;
+    }
+    else {
+        aux2->siguiente = nuevo_nodo;
+    }
+
+    nuevo_nodo->siguiente = aux1;
+
+    cout << "\t Elemento " << n << " insertado a la lista correctamente \n\n";
+}
+
+
+void mostrarLista(Nodo* lista) {
+
+    Nodo* actual = new Nodo();
+    actual = lista;
+
+    while (actual != NULL) {
+
+        cout << actual->dato << " ->";
+        actual = actual->siguiente;
+    }
+}
