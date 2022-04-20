@@ -1,0 +1,62 @@
+#include <iostream>
+#include <stdlib.h> //new
+using namespace std;
+
+struct Nodo{
+  int dato;
+  Nodo *siguiente;
+};
+
+//declarando
+void agregarPila(Nodo *&, int);
+void sacarPila(Nodo *&,int &);
+
+int main() {
+  Nodo *pila = NULL;
+  int dato;
+
+  cout<<"Digite un numero: ";
+  cin>>dato;
+  agregarPila(pila, dato);
+
+  cout<<"Digite un numero: ";
+  cin>>dato;
+  agregarPila(pila, dato);
+
+  cout<<endl;
+  cout<<"Sacando elementos de la Pila: "<<endl;
+
+  //mientras no sea el final de la pila
+  while(pila != NULL){
+    sacarPila(pila,dato);
+    if (pila != NULL){
+
+      cout<<dato<<" , ";
+    }
+    else {
+
+      cout<<dato<<".";
+    }
+    
+  }
+  
+  return 0;
+  
+}
+
+void agregarPila(Nodo *&pila, int n){
+
+  Nodo *nuevoNodo = new Nodo();
+  nuevoNodo->dato =n;
+  nuevoNodo->siguiente = pila;
+  pila = nuevoNodo;
+  cout<<"Elemento " << n << " agregado a la pila correctamente"<<endl;
+}
+
+void sacarPila(Nodo *&pila, int &n){
+  Nodo *aux = pila;
+  n = aux-> dato;
+  pila = aux->siguiente;
+  delete aux;
+  
+}
