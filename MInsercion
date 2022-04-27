@@ -1,0 +1,43 @@
+//Ordenamiento por Inserción
+
+#include <iostream>
+#include <array>
+using namespace std;
+
+int main() {
+  array<int,8> numeros = {4,5,2,3,1,8,6,7};
+
+  // 2  4  5  3 1 
+
+  // 2 4   3 5 1 8 6 7
+
+  // 2 3  4  5  1 ....
+  
+  int i, pos, aux;
+
+  //Algoritmo del ordenamiento por Inserción
+  for (i=0;i<numeros.size();i++){
+    pos = i;
+    aux = numeros[i];
+
+    //evaluamos si es mayor a la primera posición, numero de la inzquierda es mayor al numero actual
+    while((pos>0)&&(numeros[pos-1]>aux)){
+      numeros[pos] = numeros[pos-1];
+      pos--;
+      
+    }
+    numeros[pos]= aux;
+  }
+
+  cout<<"Orden Ascendente: ";
+  for(i=0;i<numeros.size();i++){
+    cout<<numeros[i]<<" "; 
+  }
+
+  cout<<endl;
+  cout<<"Orden Descendente: ";
+  for(i=numeros.size()-1;i>=0;i--){
+    cout<<numeros[i]<<" "; 
+  }
+  return 0;
+}
