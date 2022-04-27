@@ -1,0 +1,33 @@
+//Metodo burbuja
+
+#include <iostream>
+#include <array>
+using namespace std;
+
+int main() {
+  array<int,8> numeros = {4,5,2,3,1,8,6,7};
+  int i, j, aux;
+
+  //Algoritmo del metodo Burbuja
+  for (i=0;i<numeros.size();i++){
+    for(j=0;j<numeros.size();j++){
+      if(numeros[j]>numeros[j+1]){
+        aux = numeros[j];
+        numeros[j] = numeros[j+1];
+        numeros[j+1]= aux;
+      }
+    }
+  }
+
+  cout<<"Orden Ascendente: ";
+  for(i=0;i<numeros.size();i++){
+    cout<<numeros[i]<<" "; 
+  }
+
+  cout<<endl;
+  cout<<"Orden Descendente: ";
+  for(i=numeros.size()-1;i>=0;i--){
+    cout<<numeros[i]<<" "; 
+  }
+  return 0;
+}
