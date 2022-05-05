@@ -1,0 +1,63 @@
+#include <iostream>
+using namespace std;
+
+void Shell(int[], int);
+void imprimir(int[], int);
+
+int main() {
+  int total;
+  cout<<"Cuantos numeros tiene el arreglo"<<endl;
+  cin>>total;
+
+  int num[total];
+
+  for(int i=0; i<total;i++){
+    cout<<"Ingrese el numero para la posicion ["<<i<<"] del arreglo"<<endl;
+    cin>>num[i];
+  }
+
+  Shell(num, total);
+  imprimir(num, total);
+  
+}
+
+void Shell(int a[], int n){
+  
+  int pos, i, aux;
+  bool band;
+  
+  pos = n;
+  
+  while(pos >1){
+    //realizar particiones
+    pos =(pos/2);
+    band = true;
+  
+    while(band==true){
+    band = false;
+    i=0;
+    while((i+pos)<=n){
+        if (a[i]>a[i+pos]){
+          //realizamos el intercambio
+          aux= a[i];
+          a[i]=a[i+pos];
+          a[i+pos]=aux;
+          band = true;
+        }
+        i++;
+      }
+    }
+  }
+}
+
+void imprimir(int a[], int n){
+  cout<<"Numeros del arreglo ordenados de menor a mayor"<<endl;
+  for(int i=0; i<n;i++){
+    cout<<"[ "<<a[i]<<" ] ";
+  }
+
+  cout<<endl<<"\nNumeros del arreglo ordenados de mayor a menor"<<endl;
+  for(int i=n-1; i>=0;i++){
+    cout<<"[ "<<a[i]<<" ] ";
+  }
+}
